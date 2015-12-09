@@ -221,3 +221,16 @@
 {
 	margin: 0 auto !important;
 }
+#cont_static
+{
+	
+	color:#3D3E45 !important;
+	padding:5% !important;
+}
+#myPopup_static
+{
+	min-width:200px !important;
+	width:350px !important;
+	z-index:999999 !important;
+	background-color: white !important;
+}

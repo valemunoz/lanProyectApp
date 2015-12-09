@@ -18,7 +18,11 @@
 
 <div data-role="page" id="homepage" data-theme="b">
 
-    <div role="main" class="ui-content">
+    <div role="main" class="ui-content" id="principal_home">
+    	<div data-role="popup" id="myPopup_static" class="ui-content" style="max-width:280px" data-dismissible="false">
+				    <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-left">Close</a>
+						<div id=cont_static></div>
+					</div>
     	 				 <div id="left-panel2">
 
               <nav class="main-nav">
@@ -38,54 +42,54 @@
    				<br><br><span class="text_titulo2">Complete el formulario para continuar:</span><br><br>
    				<table class="table_principal">
    					<tr class="tr_principal">
-   						<td class="td_principal2">N&uacute;mero Vuelo</td><td class="td_principal"><input type="text" class="input_f2"></td>
+   						<td class="td_principal2">N&uacute;mero Vuelo</td><td class="td_principal"><input pattern="[0-9]*" type="number" class="input_f2" id="num_vuelo" name="num_vuelo"></td>
    					</tr>	
    					<tr class="tr_principal">
    						<td class="td_principal2">Destino</td><td class="td_principal">
    							
-   							<select >
-   								<option>SCL</option>
-   								<option>BGT</option>
+   							<select id="destino" name="destino">
+   								<option value="SCL">SCL</option>
+   								<option value="BGT">BGT</option>
    							</select>
    							</td>
    					</tr>	
    					<tr class="tr_principal">
-   						<td class="td_principal2">Puerta</td><td class="td_principal"><input type="text" class="input_f2"></td>
+   						<td class="td_principal2">Puerta</td><td class="td_principal"><input type="text" class="input_f2" id="puerta" name="puerta"></td>
    					</tr>	
    					<tr class="tr_principal">
    						<td class="td_principal2">Ruta</td><td class="td_principal">
    							
-   							<select class="select_opc">
-   								<option>Dom&eacute;stica</option>
-   								<option>Internacional</option>
+   							<select class="select_opc" id="ruta" name="ruta">
+   								<option value="Dom&eacute;stica">Dom&eacute;stica</option>
+   								<option value="Internacional">Internacional</option>
    							</select>
    							</td>
    					</tr>	
    					<tr class="tr_principal">
    						<td class="td_principal2">Tipo Embarque</td><td class="td_principal">
    							
-   							<select class="select_opc">
-   								<option>Puerta Delantera</option>
-   								<option>Ambas Puertas</option>
+   							<select class="select_opc" id="embarque" name="embarque">
+   								<option value="Puerta Delantera">Puerta Delantera</option>
+   								<option value="Ambas Puertas">Ambas Puertas</option>
    							</select>
    							</td>
    					</tr>	
    					<tr class="tr_principal">
    						<td class="td_principal2">Saludo</td><td class="td_principal">
    							
-   							<select class="select_opc">
-   								<option>Ma&ntilde;ana</option>
-   								<option>Tarde</option>
-   								<option>Noche</option>
+   							<select class="select_opc" id="saludo" name="saludo">
+   								<option value="Ma&ntilde;ana">Ma&ntilde;ana</option>
+   								<option value="Tarde">Tarde</option>
+   								<option value="Noche">Noche</option>
    							</select>
    							</td>
    					</tr>	
    						<tr class="tr_principal">
    						<td class="td_principal2">Bus</td><td class="td_principal">
    							
-   							<select class="select_opc">
-   								<option>NO</option>
-   								<option>SI</option>
+   							<select class="select_opc" id="bus" name="bus">
+   								<option value="No">NO</option>
+   								<option value="Si">SI</option>
    							</select>
    							</td>
    					</tr>	
@@ -113,5 +117,6 @@
 <script type="text/javascript" src="js/jquery.swipebox.js"></script>
 <script src="js/jquery.mobile-custom.js"></script>
 <script src="js/funciones.js"></script>
+<script src="cordova.js"></script>
 </body>
 </html>
