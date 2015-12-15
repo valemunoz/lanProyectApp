@@ -70,7 +70,7 @@ function loadSequence(vuelo)
 						}
 		);
 }
-function loadSecuenciaBoton(vuelo)
+function loadSecuenciaBoton(vuelo,file_voice)
 {
 
 	$.mobile.loading( 'show', {
@@ -80,7 +80,7 @@ function loadSecuenciaBoton(vuelo)
 				html: ""
 			});
 	$("#centro_div").load("http://www.chilemap.cl/lanProyect/text.php", 
-					{vuelo:vuelo} 
+					{vuelo:vuelo, file_voice:file_voice} 
 						,function(){	
 							$.mobile.loading( 'hide');	
 							
@@ -147,13 +147,14 @@ function playAudio(src) {
         function onSuccess() {
         	
             //console.log("playAudio():Audio Success");
+            //alert("paso");
             
         }
 
         // onError Callback
         //
         function onError(error) {
-           /* alert('code: '    + error.code    + '\n' +
+            /*alert('code: '    + error.code    + '\n' +
                   'message: ' + error.message + '\n');*/
         }
 
@@ -185,22 +186,33 @@ function playAudio(src) {
         		}
         	}
         }
-         function playAudioBienvenida(vuelo) 
+        function getPhoneGapPath() {
+
+    			var path = window.location.pathname;    
+    			path= path.replace("index_sesion.html","");    			
+    			return path;
+				};
+         function playAudioBienvenida(vuelo,file_voice) 
          {
+         	var path=getPhoneGapPath();
 						vuelo_arr=vuelo.split(",");         	
         		indice_media=0;
         		audio_stop=false;
             // Create Media object from src
        			my_media_arr=Array();
-            my_media_arr[0] = "http://www.chilemap.cl/lanProyect/voces/bienvenida.mp3";  
+            //my_media_arr[0] = "http://www.chilemap.cl/lanProyect/voces/bienvenida.mp3";  
+            my_media_arr[0] = path+"appWeb/voces/bdias_es.mp3";  
+            my_media_arr[1] = path+"appWeb/voces/atencion_es.mp3";  
+            var b=1;
             for(i=0;i < vuelo_arr.length;i++)
             {          
-            	
-            	var b=i+1;
+            	b++;           	
             
-            	my_media_arr[b] = "http://www.chilemap.cl/lanProyect/voces/"+vuelo_arr[i]+".mp3";
+            	//my_media_arr[b] = "http://www.chilemap.cl/lanProyect/voces/"+vuelo_arr[i]+".mp3";
+            	my_media_arr[b] = path+"appWeb/voces/"+vuelo_arr[i]+"_es.mp3";  
           	}
-            my_media_arr[vuelo_arr.length+1] = "http://www.chilemap.cl/lanProyect/voces/bienvenida2.mp3";
+            //my_media_arr[vuelo_arr.length+1] = "http://www.chilemap.cl/lanProyect/voces/bienvenida2.mp3";
+            my_media_arr[b++] = path+"appWeb/voces/"+file_voice+".mp3"; 
             my_media= new Media( my_media_arr[0], onSuccess, onError,onStatus);     
             my_media.play(); 
             if (mediaTimer == null) {
